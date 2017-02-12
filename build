@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+cd vscode
+git checkout 1.9.1
+cp ../product.json .
+cp ../code.png resources/linux
+scripts/npm.sh install --arch=arm
+gulp vscode-linux-arm-build-deb
+cd ..
