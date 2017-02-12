@@ -2,5 +2,7 @@
 set -e
 
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-sudo apt-get -y dist-upgrade
-sudo apt-get -y install nodejs libx11-dev fakeroot rpm
+sudo apt-get dist-upgrade -y
+sudo apt-get install -y git build-essential nodejs g++ libx11-dev fakeroot rpm
+sudo npm install -g gulp
+git clone git@github.com:microsoft/vscode || true

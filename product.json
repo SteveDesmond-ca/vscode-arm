@@ -15,7 +15,6 @@
 	"reportIssueUrl": "https://go.microsoft.com/fwlink/?LinkId=534872",
 	"urlProtocol": "vscode",
 	"win32SetupExeBasename": "VSCodeSetup",
-	"darwinCredits": "resources/darwin/Credits.rtf",
 	"downloadUrl": "https://code.visualstudio.com",
 	"welcomePage": "https://go.microsoft.com/fwlink/?LinkId=723048",
 	"updateUrl": "https://vscode-update.azurewebsites.net",

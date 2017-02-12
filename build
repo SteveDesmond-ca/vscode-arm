@@ -2,6 +2,7 @@
 set -e
 
 cd vscode
+git fetch
 git checkout 1.9.1
 cp ../product.json .
 cp ../code.png resources/linux
