@@ -6,6 +6,8 @@ git fetch
 git checkout 1.9.1
 cp ../product.json .
 cp ../code.png resources/linux
+export CC=$(which arm-linux-gnueabihf-gcc)
+export CXX=$(which arm-linux-gnueabihf-g++)
 scripts/npm.sh install --arch=arm
 gulp vscode-linux-arm-build-deb
 cd ..
