@@ -65,7 +65,8 @@
 		"ms-vscode.sublime-keybindings": "{**/.sublime-project, **/.sublime-workspace}",
 		"k--kato.intellij-idea-keybindings": "{**/.idea}",
 		"dzannotti.vscode-babel-coloring": "{**/.babelrc}",
-		"christian-kohler.npm-intellisense": "{**/package.json}"
+		"christian-kohler.npm-intellisense": "{**/package.json}",
+                "octref.vetur": "{**/*.vue}"
 	},
 	"extensionImportantTips": {
 		"ms-vscode.csharp": {
