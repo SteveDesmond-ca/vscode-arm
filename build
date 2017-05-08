@@ -5,8 +5,6 @@ export CC=$(which arm-linux-gnueabihf-gcc)
 export CXX="$(which arm-linux-gnueabihf-g++) -L$(pwd)/rootfs/usr/lib/arm-linux-gnueabihf/"
 
 cd vscode
-git fetch --tags
-git checkout 1.11.0
 cp -v ../product.json .
 cp -v ../code.png resources/linux
 scripts/npm.sh install --arch=armhf

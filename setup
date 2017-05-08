@@ -6,7 +6,14 @@ sudo apt-get dist-upgrade -y
 sudo apt-get install -y git build-essential nodejs g++ libx11-dev libxkbfile-dev debootstrap qemu-user-static python fakeroot rpm
 sudo npm install -g gulp
 git clone git@github.com:microsoft/vscode || true
-sudo qemu-debootstrap --arch=armhf --variant=minbase xenial rootfs
-sudo chroot rootfs apt-get update
-sudo chroot rootfs apt-get dist-upgrade -y
-sudo chroot rootfs apt-get install -y libx11-dev libxkbfile-dev
+cd vscode
+git fetch --tags
+git checkout 1.12.1
+cd ..
+
+if [[ ! -d "rootfs" ]]; then
+  sudo qemu-debootstrap --arch=armhf --variant=minbase xenial rootfs
+  sudo chroot rootfs apt-get update
+  sudo chroot rootfs apt-get dist-upgrade -y
+  sudo chroot rootfs apt-get install -y libx11-dev libxkbfile-dev
+fi
