@@ -3,17 +3,18 @@ set -e
 
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 sudo apt-get dist-upgrade -y
-sudo apt-get install -y git build-essential nodejs g++ libx11-dev libxkbfile-dev debootstrap qemu-user-static python fakeroot rpm
+sudo apt-get install -y git build-essential nodejs g++ debootstrap qemu-user-static python libsecret-1-dev fakeroot rpm
 sudo npm install -g gulp
 git clone git@github.com:microsoft/vscode || true
+./clean
 cd vscode
 git fetch --tags
-git checkout 1.12.1
+git checkout 1.12.2
 cd ..
 
 if [[ ! -d "rootfs" ]]; then
   sudo qemu-debootstrap --arch=armhf --variant=minbase xenial rootfs
-  sudo chroot rootfs apt-get update
-  sudo chroot rootfs apt-get dist-upgrade -y
-  sudo chroot rootfs apt-get install -y libx11-dev libxkbfile-dev
 fi
+sudo chroot rootfs apt-get update
+sudo chroot rootfs apt-get dist-upgrade -y
+sudo chroot rootfs apt-get install -y libx11-dev libxkbfile-dev pkg-config libsecret-1-dev

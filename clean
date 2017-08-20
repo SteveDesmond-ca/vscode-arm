@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+cd vscode
+git reset --hard
+git clean -fdx
+cd ..
