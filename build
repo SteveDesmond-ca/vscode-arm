@@ -2,7 +2,8 @@
 set -e
 
 export CC=$(which arm-linux-gnueabihf-gcc)
-export CXX="$(which arm-linux-gnueabihf-g++) --sysroot=$(pwd)/rootfs -L$(pwd)/rootfs/usr/lib/arm-linux-gnueabihf/"
+export CXX="$(which arm-linux-gnueabihf-g++) --sysroot=$(pwd)/rootfs -L$(pwd)/rootfs/usr/lib/arm-linux-gnueabihf -I$(pwd)/rootfs/usr/include/libsecret-1 -I$(pwd)/rootfs/usr/include/glib-2.0 -I$(pwd)/rootfs/usr/lib/arm-linux-gnueabihf/glib-2.0/include"
+export PKG_CONFIG_PATH="$(pwd)/rootfs/usr/share/pkgconfig:$(pwd)/rootfs/usr/lib/arm-linux-gnueabihf/pkgconfig"
 
 cd vscode
 cp -v ../product.json .

@@ -9,12 +9,15 @@ git clone git@github.com:microsoft/vscode || true
 ./clean
 cd vscode
 git fetch --tags
-git checkout 1.12.2
+git checkout master
+git pull
 cd ..
 
 if [[ ! -d "rootfs" ]]; then
   sudo qemu-debootstrap --arch=armhf --variant=minbase xenial rootfs
 fi
+sudo mount --bind /dev/pts $(pwd)/rootfs/dev/pts
+sudo mount --bind /proc $(pwd)/rootfs/proc
 sudo chroot rootfs apt-get update
 sudo chroot rootfs apt-get dist-upgrade -y
-sudo chroot rootfs apt-get install -y libx11-dev libxkbfile-dev pkg-config libsecret-1-dev
+sudo chroot rootfs apt-get install -y libx11-dev libxkbfile-dev pkg-config libsecret-1-dev libglib2.0
