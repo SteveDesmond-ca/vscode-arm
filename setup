@@ -9,7 +9,7 @@ git clone git@github.com:microsoft/vscode || true
 ./clean
 cd vscode
 git fetch --tags
-git checkout master
+git checkout release/1.18
 git pull
 cd ..
 
