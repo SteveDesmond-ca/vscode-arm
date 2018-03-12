@@ -1,17 +1,22 @@
 #!/bin/bash
 set -e
 
-curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get dist-upgrade -y
-sudo apt-get install -y git build-essential nodejs g++ debootstrap qemu-user-static python libsecret-1-dev fakeroot rpm
-sudo npm install -g gulp
+sudo apt-get install -y git build-essential nodejs g++ debootstrap qemu-user-static python libsecret-1-dev fakeroot rpm curl
+sudo npm install -g gulp yarn
 git clone git@github.com:microsoft/vscode || true
 ./clean
 cd vscode
 git fetch --tags
-git checkout 1.18.0
-git pull
+git checkout 1.21.0
 cd ..
+
+dl_link=https://az764295.vo.msecnd.net/stable/9a199d77c82fcb82f39c68bb33c614af01c111ba/code-stable-code_1.21.0-1520420608_amd64.tar.gz
+if [[ ! -f "vscode-official.tar.gz" ]]; then
+  curl $dl_link > vscode-official.tar.gz
+fi
+tar --strip-components=1 -xf vscode-official.tar.gz VSCode-linux-x64/resources/app/resources/linux/code.png VSCode-linux-x64/resources/app/product.json
 
 if [[ ! -d "rootfs" ]]; then
   sudo qemu-debootstrap --arch=armhf --variant=minbase xenial rootfs

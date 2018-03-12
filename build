@@ -6,10 +6,15 @@ export CXX="$(which arm-linux-gnueabihf-g++) --sysroot=$(pwd)/rootfs -L$(pwd)/ro
 export PKG_CONFIG_PATH="$(pwd)/rootfs/usr/share/pkgconfig:$(pwd)/rootfs/usr/lib/arm-linux-gnueabihf/pkgconfig"
 
 cd vscode
-cp -v ../product.json .
-cp -v ../code.png resources/linux
-./scripts/npm.sh install --arch=arm
-gulp vscode-linux-arm-min --max_old_space_size=4096
+cp -rv ../resources/app/* .
+sed -i 's/.*darwinCredits.*//' product.json
+sed -i 's/.*electronRepository.*//' product.json
+
+echo > build/npm/preinstall.js
+npm i --target_arch=arm
+npm i electron-rebuild --target_arch=arm
+node_modules/.bin/electron-rebuild --arch=arm --version 1.8.3
+gulp vscode-linux-arm-min
 gulp vscode-linux-arm-build-deb
 cd ..
 cp -v vscode/.build/linux/deb/armhf/deb/*.deb .

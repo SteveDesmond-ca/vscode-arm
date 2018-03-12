@@ -256,3 +256,6 @@ vscode
 VSCode-linux-arm
 rootfs
 *.deb
+VSCode-linux-x64/
+resources/
+vscode-official.tar.gz
