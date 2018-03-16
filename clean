@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+rm -f vscode-official.tar.gz
 cd vscode
 git reset --hard
 git clean -fdx
