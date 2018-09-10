@@ -1,5 +1,5 @@
 # vscode-arm
-Automated builds of Visual Studio Code for ARM Linux
+Automated builds of Visual Studio Code for Linux on ARM
 
 ## Installation Instructions
 
@@ -8,8 +8,6 @@ Automated builds of Visual Studio Code for ARM Linux
 
 ## Building from source
 
-*Note: These instructions currently only work for versions 1.21.1 and older. New builds, and new scripts, are coming soon!*
-
 1. Clone this repo
-1. Run `./setup` to configure your system
-1. Run `./build` to compile vscode and build a `.deb` file
+1. Run `docker-compose up --build`
+1. Once complete, the `.deb` file will be in the `bin` directory
