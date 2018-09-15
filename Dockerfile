@@ -26,7 +26,7 @@ RUN yarn add global \
   gulp-watch
 
 ENV npm_config_arch=arm
-ENV VSCODE_VERSION=1.27.1
+ENV VSCODE_VERSION=1.27.2
 
 RUN curl -L https://github.com/microsoft/vscode/archive/$VSCODE_VERSION.tar.gz > vscode.tar.gz
 RUN tar --strip-components=1 -C vscode -xf vscode.tar.gz
@@ -44,5 +44,4 @@ RUN sed -i 's/.*electronRepository.*//' product.json
 RUN yarn
 RUN yarn run gulp vscode-linux-arm-min
 RUN yarn run gulp vscode-linux-arm-build-deb
-#ENTRYPOINT [ "bash" ]
-ENTRYPOINT [ "sh", "-c", "cp -v /vscode/.build/linux/deb/armhf/deb/*.deb /out" ]
+ENTRYPOINT [ "sh", "-c", "cp -v /vscode/.build/linux/deb/armhf/deb/*.deb /out/vscode-$VSCODE_VERSION.deb" ]
