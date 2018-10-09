@@ -26,7 +26,7 @@ RUN yarn add global \
   gulp-watch
 
 ENV npm_config_arch=arm
-ENV VSCODE_VERSION=1.27.2
+ENV VSCODE_VERSION=1.28.0
 
 RUN curl -L https://github.com/microsoft/vscode/archive/$VSCODE_VERSION.tar.gz > vscode.tar.gz
 RUN tar --strip-components=1 -C vscode -xf vscode.tar.gz
