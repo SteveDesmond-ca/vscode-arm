@@ -1,6 +1,8 @@
 # vscode-arm
 Automated builds of Visual Studio Code for Linux on ARM
 
+No longer maintained -- for more recent builds, check out https://code.headmelted.com/
+
 ## Installation Instructions
 
 1. Download the [latest release](https://github.com/stevedesmond-ca/vscode-arm/releases/latest)
